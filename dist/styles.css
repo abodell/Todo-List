@@ -56,3 +56,24 @@ body {
     background-color: #FFFFFF;
     z-index: -1;
 }
+
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px -1px 3px, rgba(0, 0, 0, 0.24) 0px -1px 2px;
+}
+
+#footer > a {
+    text-decoration: none;
+    color: #2E8DFF;
+    font-size: 20px;
+}
+
+#footer > a > img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
