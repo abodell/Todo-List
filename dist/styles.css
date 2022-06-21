@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items:center;
     gap: 1rem;
-    margin-right: 22rem;
+    margin-right: 20rem;
     font-size: 32px;
 }
 
@@ -49,6 +49,45 @@ body {
     grid-area: 0 / 1 / 1 / 2;
     background-color: #2E8DFF;
     box-shadow: rgba(0, 0, 0, 0.12) 1px 0px 3px, rgba(0, 0, 0, 0.24) 1px 0px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    color: #FFFFFF;
+    padding-top: 2rem;
+}
+
+#sidebar button {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    height: 40px;
+    gap: 1rem;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#project-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar button:hover {
+    background-color: #0C72ED;
+}
+
+#sidebar img {
+    -webkit-filter: invert(1) grayscale(0);
+    filter: invert(1) grayscale(0);
+    width: 35px;
+    height: 35px;
 }
 
 #dashboard {
@@ -69,7 +108,7 @@ body {
 #footer > a {
     text-decoration: none;
     color: #2E8DFF;
-    font-size: 20px;
+    font-size: 28px;
 }
 
 #footer > a > img {
