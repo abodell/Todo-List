@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    display: flex;
+    padding: 1rem 0rem 1rem 0rem;
+    align-items: center;
+    justify-content: center;
+    color: #2E8DFF;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid whitesmoke;
+}
+
+#title {
+    display: flex;
+    align-items:center;
+    gap: 1rem;
+    margin-right: 22rem;
+    font-size: 32px;
+}
+
+#title > h1 {
+    text-shadow: 0 13.36px 8.896px #CBCBCB   ,0 -2px 1px #fff;
+    letter-spacing: -4px;
+    display: block;
+}
+
+#title > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
