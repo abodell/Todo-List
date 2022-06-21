@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body {
+    min-height: 100vh;
+}
+
 #header {
     display: flex;
     padding: 1rem 0rem 1rem 0rem;
@@ -11,7 +15,7 @@
     justify-content: center;
     color: #2E8DFF;
     background-color: #FFFFFF;
-    border-bottom: 2px solid whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 #title {
@@ -32,4 +36,23 @@
     width: 70px;
     height: 70px;
     border-radius: 10px;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-height: 100vh;
+    margin-top: .05rem;
+}
+
+#sidebar {
+    grid-area: 0 / 1 / 1 / 2;
+    background-color: #2E8DFF;
+    box-shadow: rgba(0, 0, 0, 0.12) 1px 0px 3px, rgba(0, 0, 0, 0.24) 1px 0px 2px;
+}
+
+#dashboard {
+    grid-area: 0 / 2 / 1 / 3;
+    background-color: #FFFFFF;
+    z-index: -1;
 }
