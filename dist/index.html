@@ -22,17 +22,17 @@
         <div id = 'main'>
             <div id = 'sidebar'>
                 <h1>Schedule</h1>
-                <button id = 'todaybtn'>
-                    <img id = 'today' src = 'images/day.png'>
-                    Today
-                </button>
-                <button id = 'allbtn'>
+                <button type = 'button' id = 'allbtn'>
                     <img id = 'all' src = 'images/calendar.png'>
                     All
                 </button>
+                <button type = 'button' id = 'todaybtn'>
+                    <img id = 'today' src = 'images/day.png'>
+                    Today
+                </button>
                 <h1>Lists</h1>
-                <button id = 'addbtn'>
-                    <img id = 'add' src = 'images/add.png'>
+                <button type = 'button' id = 'addbtn'>
+                    <img class = 'add' src = 'images/add.png'>
                     Create List
                 </button>
                 <div id = 'project-list'>
@@ -40,7 +40,12 @@
                 </div>
             </div>
             <div id = 'dashboard'>
-
+                <div id = 'classification'>
+                    <h1>All Scheduled</h1>
+                    <button type = 'button' id = 'addtask'>
+                        Create Task
+                    </button>
+                </div>
             </div>
         </div>
         <div id = 'footer'>

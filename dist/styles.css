@@ -42,7 +42,7 @@ body {
 #main {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    min-height: 100vh;
+    min-height: 85vh;
     margin-top: .05rem;
 }
 
@@ -56,6 +56,7 @@ body {
     gap: 3rem;
     color: #FFFFFF;
     padding-top: 2rem;
+    margin-right: .1rem;
 }
 
 #sidebar button {
@@ -73,6 +74,9 @@ body {
     cursor: pointer;
     text-align: left;
     padding-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    transition: .3s ease-out;
 }
 
 #project-list {
@@ -82,6 +86,7 @@ body {
 
 #sidebar button:hover {
     background-color: #0C72ED;
+    transition: .15s ease-in;
 }
 
 #sidebar img {
@@ -94,7 +99,33 @@ body {
 #dashboard {
     grid-area: 0 / 2 / 1 / 3;
     background-color: #FFFFFF;
-    z-index: -1;
+}
+
+#classification {
+    color: #2E8DFF;
+    padding: 2rem 1rem 1rem 1.5rem;
+    font-weight: 600;
+}
+
+#addtask {
+    margin-top: .8rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: .8rem .8rem .8rem 0rem;
+    font-size: 20px;
+    width: 32%;
+    background-color: #FFFFFF;
+    color: #2E8DFF;
+    text-align: left;
+    font-weight: 700;
+    transition: .3s ease-out;
+}
+
+#addtask:hover {
+    background-color: #EDEDED;
+    transition: .15s ease-in;
 }
 
 #footer {
@@ -103,6 +134,7 @@ body {
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+    margin-top: .1rem;
     box-shadow: rgba(0, 0, 0, 0.12) 0px -1px 3px, rgba(0, 0, 0, 0.24) 0px -1px 2px;
 }
 
@@ -110,6 +142,7 @@ body {
     text-decoration: none;
     color: #2E8DFF;
     font-size: 28px;
+    font-weight: 600;
 }
 
 #footer > a > img {
