@@ -19,7 +19,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-#title {
+#headertitle {
     display: flex;
     align-items:center;
     gap: 1rem;
@@ -27,13 +27,13 @@ body {
     font-size: 32px;
 }
 
-#title > h1 {
+#headertitle > h1 {
     text-shadow: 0 13.36px 8.896px #CBCBCB   ,0 -2px 1px #fff;
     letter-spacing: -4px;
     display: block;
 }
 
-#title > img {
+#headertitle > img {
     width: 70px;
     height: 70px;
     border-radius: 10px;
@@ -107,7 +107,7 @@ body {
     font-weight: 600;
 }
 
-#addtask {
+#addtask, .btn {
     margin-top: .8rem;
     border: none;
     outline: none;
@@ -123,9 +123,47 @@ body {
     transition: .3s ease-out;
 }
 
-#addtask:hover {
+#addtask:hover, .btn:hover {
     background-color: #EDEDED;
     transition: .15s ease-in;
+}
+
+#taskform {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.formdiv {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+#desc {
+    width: 225px;
+}
+
+#create {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    padding-left: .8rem;
+    margin-top: 1rem;
+}
+
+.formdiv input, .formdiv select {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #2E8DFF;
+    border-left: 2px solid whitesmoke;
+    font-size: 14px;
+}
+
+#title, #desc {
+    padding-top: .15rem;
 }
 
 #footer {
