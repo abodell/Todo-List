@@ -9,9 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-    <script src = 'main.js'></script>
+    <script src = 'main.js' defer></script>
 </head>
 <body>
+    <form id="popup-form">
+        <div id = 'info-card'>
+            <div class = 'inputs'>
+                <label for = 'title'>Title</label>
+                <input type = 'text' id = 'title' required min = '1' max = '10' placeholder = 'Do dishes...'>
+            </div>
+            <div class = 'inputs'>
+                <label for = 'desc'>Description</label>
+                <input type = 'text' id = 'desc' min = '5' max = '30'>
+            </div>
+            <div class = 'inputs'>
+                <label for = 'duedate'>Due Date</label>
+                <input type = 'date' id = 'duedate' required>
+            </div>
+            <div class = 'inputs'>
+                <label for = 'priority'>Priority</label>
+                <select id = 'priority' required>
+                    <option value = 'low'>Low</option>
+                    <option value = 'medium'>Medium</option>
+                    <option value = 'high'>High</option>
+                </select> 
+            </div>
+            <button type = 'submit'>Submit</button>
+        </div>
+    </form>
     <div id = 'content'>
         <div id = 'header'>
             <div id = 'headertitle'>
