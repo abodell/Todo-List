@@ -16,7 +16,7 @@
         <div id = 'info-card'>
             <div class = 'inputs'>
                 <label for = 'title'>Title</label>
-                <input type = 'text' id = 'title' required min = '1' max = '10' placeholder = 'Do dishes...'>
+                <input type = 'text' id = 'title' min = '1' max = '10' placeholder = 'Do dishes...'>
             </div>
             <div class = 'inputs'>
                 <label for = 'desc'>Description</label>
@@ -24,11 +24,11 @@
             </div>
             <div class = 'inputs'>
                 <label for = 'duedate'>Due Date</label>
-                <input type = 'date' id = 'duedate' required>
+                <input type = 'date' id = 'duedate'>
             </div>
             <div class = 'inputs'>
                 <label for = 'priority'>Priority</label>
-                <select id = 'priority' required>
+                <select id = 'priority'>
                     <option value = 'Low'>Low</option>
                     <option value = 'Medium'>Medium</option>
                     <option value = 'High'>High</option>
@@ -47,12 +47,12 @@
         <div id = 'main'>
             <div id = 'sidebar'>
                 <h1>Schedule</h1>
-                <button type = 'button' id = 'allbtn'>
-                    <img id = 'all' src = 'images/calendar.png'>
+                <button type = 'button' id = 'All'>
+                    <img id = 'allimg' src = 'images/calendar.png'>
                     All
                 </button>
-                <button type = 'button' id = 'todaybtn'>
-                    <img id = 'today' src = 'images/day.png'>
+                <button type = 'button' id = 'Today'>
+                    <img id = 'todayimg' src = 'images/day.png'>
                     Today
                 </button>
                 <h1>Lists</h1>
@@ -61,7 +61,7 @@
                     Create List
                 </button>
                 <form id = 'list-popup' >
-                    <input type = 'text' id = 'list-create' placeholder = 'Groceries...' required>
+                    <input type = 'text' id = 'list-create' placeholder = 'Groceries...'>
                     <button type = 'submit'>Create List</button>
                 </form>
                 <div id = 'project-list'>

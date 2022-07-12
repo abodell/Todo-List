@@ -1,7 +1,7 @@
 class List {
-    constructor(title, tasks) {
+    constructor(title) {
         this.title = title;
-        this.tasks = tasks;
+        this.tasks = [];
     }
 
     setTitle(title) {
@@ -11,13 +11,13 @@ class List {
     getTitle() {
         return this.title;
     }
-
+    
     addTask(task) {
         this.tasks.push(task);
     }
 
-    getTasks() {
-        return this.tasks;
+    removeTask(index) {
+        this.tasks.splice(index,1);
     }
 
 }

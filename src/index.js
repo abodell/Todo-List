@@ -2,7 +2,7 @@ import Task from './task';
 import List from './list';
 
 let allTasks = [];
-let lists = [];
+let lists = [new List('All'), new List('Today')];
 
 const createBtn = document.getElementById('addtask');
 const popupForm = document.getElementById('popup-form');
@@ -12,10 +12,10 @@ const description = document.getElementById('desc');
 const dueDate = document.getElementById('duedate');
 const priority = document.getElementById('priority');
 const taskList = document.getElementById('tasklist');
-const todayBtn = document.getElementById('todaybtn');
+const todayBtn = document.getElementById('Today');
 const listTitle = document.getElementById('list-title');
 const addBtn = document.getElementById('addbtn');
-const allBtn = document.getElementById('all');
+const allBtn = document.getElementById('All');
 const listPopupForm = document.getElementById('list-popup');
 const listTextBox = document.getElementById('list-create');
 const projectList = document.getElementById('project-list');
@@ -48,7 +48,7 @@ export const operationHandler = (() => {
         const newTitle = listTextBox.value;
         return new List(newTitle);
     }
-
+    // adds a list to the page
     function addList(event) {
         event.preventDefault();
         console.log(lists);
@@ -58,25 +58,27 @@ export const operationHandler = (() => {
         clearLists();
         displayLists();
     }
-
+    // removes lists from dom
     function clearLists() {
         projectList.innerHTML = '';
     }
-
+    // creates our button for each of our lists
     function displayLists() {
         listPopupForm.style.display = 'none';
         addBtn.style.display = 'flex';
-        for (let i = 0; i < lists.length; i++) {
+        for (let i = 2; i < lists.length; i++) {
             let listBtn = document.createElement('button');
+            listBtn.setAttribute('id', (lists[i].title.toLowerCase()) + 'btn');
             listBtn.textContent = lists[i].title;
             projectList.appendChild(listBtn);
         }
     }
-
-    function addToList(task) {
+    // adds a task to our task list
+    function addToTasks(task, activePage) {
+        
         allTasks.push(task);
     }
-    
+    // contains all of the styling for our task cards
     function styleCard(task) {
         const taskDiv = document.createElement('div');
         if (task.priority == 'High') {
@@ -99,7 +101,7 @@ export const operationHandler = (() => {
         cardDesc.classList.add('card-desc');
         rightCard.classList.add('right-card');
         removeBtn.classList.add ('removebtn');
-        cardTop.innerHTML = task.getTitle().toUpperCase() + '\t' + task.getDate();
+        cardTop.innerHTML = task.getTitle().toUpperCase() + '\t\t' + task.getDate();
         cardDesc.innerHTML = task.getDesc();
         leftCard.appendChild(cardTop);
         leftCard.appendChild(cardDesc);
@@ -124,26 +126,29 @@ export const operationHandler = (() => {
         clearTasks();
         displayAllTasks();
     }
-
+    // add a task to the page
     function addTask(event) {
         event.preventDefault();
         const task = createTask();
-        addToList(task);
+        addToTasks(task);
         clearTasks();
         displayAllTasks();
         clearInputs();
     }
-
+    // resets the inputs for the form
     function clearInputs() {
         title.value = '';
         description.value = '';
         dueDate.value = '';
         priority.value = 'Low';
     }
-
+    // clears all of the tasks from the dom
     function clearTasks() {
         taskList.innerHTML = '';
     }
+
+    // need to determine which list we are looking at
+
 
     createBtn.addEventListener('click', infoPopup);
     popupForm.addEventListener('submit', addTask);
