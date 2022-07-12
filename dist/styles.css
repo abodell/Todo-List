@@ -139,7 +139,11 @@ body {
 
 #project-list {
     display: flex;
+    margin-top: -.8rem;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 #sidebar button:hover {
@@ -218,7 +222,6 @@ body {
     padding: .5rem .8rem .5rem .2rem;
     align-items: center;
     justify-content: space-between;
-    color: #2E8DFF;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -232,7 +235,6 @@ body {
 .removebtn {
     outline: none;
     background-color: inherit;
-    color: #DF1111;
     border: none;
     font-size: 14px;
     cursor: pointer;

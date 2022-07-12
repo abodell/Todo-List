@@ -2,6 +2,7 @@ import Task from './task';
 import List from './list';
 
 let allTasks = [];
+let lists = [];
 
 const createBtn = document.getElementById('addtask');
 const popupForm = document.getElementById('popup-form');
@@ -16,7 +17,8 @@ const listTitle = document.getElementById('list-title');
 const addBtn = document.getElementById('addbtn');
 const allBtn = document.getElementById('all');
 const listPopupForm = document.getElementById('list-popup');
-const listTextBox = document.getElementById('#list-create');
+const listTextBox = document.getElementById('list-create');
+const projectList = document.getElementById('project-list');
 
 // will handle all of the operations on our page
 export const operationHandler = (() => {
@@ -47,12 +49,43 @@ export const operationHandler = (() => {
         return new List(newTitle);
     }
 
+    function addList(event) {
+        event.preventDefault();
+        console.log(lists);
+        const list = createList();
+        lists.push(list);
+        listTextBox.value = '';
+        clearLists();
+        displayLists();
+    }
+
+    function clearLists() {
+        projectList.innerHTML = '';
+    }
+
+    function displayLists() {
+        listPopupForm.style.display = 'none';
+        addBtn.style.display = 'flex';
+        for (let i = 0; i < lists.length; i++) {
+            let listBtn = document.createElement('button');
+            listBtn.textContent = lists[i].title;
+            projectList.appendChild(listBtn);
+        }
+    }
+
     function addToList(task) {
         allTasks.push(task);
     }
     
     function styleCard(task) {
         const taskDiv = document.createElement('div');
+        if (task.priority == 'High') {
+            taskDiv.style.backgroundColor = '#E85B5B';
+        } else if (task.priority == 'Medium') {
+            taskDiv.style.backgroundColor = '#E8C45B'; 
+        } else {
+            taskDiv.style.backgroundColor = '#5BE864';
+        }
         const leftCard = document.createElement('div');
         const cardTop = document.createElement('div');
         const cardDesc = document.createElement('div');
@@ -66,7 +99,7 @@ export const operationHandler = (() => {
         cardDesc.classList.add('card-desc');
         rightCard.classList.add('right-card');
         removeBtn.classList.add ('removebtn');
-        cardTop.innerHTML = task.getTitle().toUpperCase() + '\t' + task.getDate() + '\t' + task.getPriority();
+        cardTop.innerHTML = task.getTitle().toUpperCase() + '\t' + task.getDate();
         cardDesc.innerHTML = task.getDesc();
         leftCard.appendChild(cardTop);
         leftCard.appendChild(cardDesc);
@@ -112,9 +145,8 @@ export const operationHandler = (() => {
         taskList.innerHTML = '';
     }
 
-
-
     createBtn.addEventListener('click', infoPopup);
     popupForm.addEventListener('submit', addTask);
     addBtn.addEventListener('click', listFormPopup);
+    listPopupForm.addEventListener('submit', addList);
 })();
