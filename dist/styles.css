@@ -9,10 +9,9 @@ body {
     min-height: 100vh;
 }
 
-/*#content {
-    filter: blur(10px);
-    filter: opacity(5%);
-}*/
+#content {
+    transition: .2s ease-out;
+}
 
 #popup-form {
     display: none;
@@ -22,6 +21,7 @@ body {
     bottom: 12%;
     left: 40%;
     z-index: 3000;
+    transition: .2s ease-in;
 }
 
 #info-card {
@@ -70,9 +70,9 @@ body {
 
 #header {
     display: flex;
-    padding: 1rem 0rem 1rem 0rem;
+    padding: 1rem 0rem 1rem 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #2E8DFF;
     background-color: #FFFFFF;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -82,7 +82,6 @@ body {
     display: flex;
     align-items:center;
     gap: 1rem;
-    margin-right: 20rem;
     font-size: 32px;
 }
 
@@ -187,18 +186,6 @@ body {
     transition: .15s ease-in;
 }
 
-#taskform {
-    display: none;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.formdiv {
-    display: flex;
-    gap: .5rem;
-    flex-direction: column;
-}
-
 #desc {
     width: 225px;
 }
@@ -211,14 +198,6 @@ body {
     height: 2rem;
     padding-left: .8rem;
     margin-top: 1rem;
-}
-
-.formdiv input, .formdiv select {
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #2E8DFF;
-    border-left: 2px solid whitesmoke;
-    font-size: 14px;
 }
 
 #title, #desc {
@@ -238,6 +217,7 @@ body {
     padding: .5rem .8rem .5rem .2rem;
     align-items: center;
     justify-content: space-between;
+    color: #2E8DFF;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
