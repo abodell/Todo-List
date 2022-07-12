@@ -40,13 +40,15 @@ export const operationHandler = (() => {
         const cardDesc = document.createElement('div');
         const rightCard = document.createElement('div');
         const removeBtn = document.createElement('button');
+        removeBtn.addEventListener('click', removeTask);
+        taskDiv.id = tasks.indexOf(task);
         taskDiv.classList.add('task');
         leftCard.classList.add('left-card');
         cardTop.classList.add('card-top');
         cardDesc.classList.add('card-desc');
         rightCard.classList.add('right-card');
         removeBtn.classList.add ('removebtn');
-        cardTop.innerHTML = task.getTitle() + '\t' + task.getDate() + '\t' + task.getPriority();
+        cardTop.innerHTML = task.getTitle().toUpperCase() + '\t' + task.getDate() + '\t' + task.getPriority();
         cardDesc.innerHTML = task.getDesc();
         leftCard.appendChild(cardTop);
         leftCard.appendChild(cardDesc);
@@ -57,7 +59,7 @@ export const operationHandler = (() => {
         taskList.appendChild(taskDiv);
     }
 
-    function displayTasks() {
+    function displayAllTasks() {
         popupForm.style.display = 'none';
         content.style.filter = 'none';
         for (let i = 0; i < tasks.length; i++) {
@@ -65,12 +67,27 @@ export const operationHandler = (() => {
         }
     }
 
+    function removeTask(event) {
+        const task = tasks[event.target.id];
+        tasks.splice(tasks.indexOf(task), 1);
+        clearTasks();
+        displayAllTasks();
+    }
+
     function addTask(event) {
         event.preventDefault();
         const task = createTask();
         addToList(task);
         clearTasks();
-        displayTasks();
+        displayAllTasks();
+        clearInputs();
+    }
+
+    function clearInputs() {
+        title.value = '';
+        description.value = '';
+        dueDate.value = '';
+        priority.value = 'Low';
     }
 
     function clearTasks() {
