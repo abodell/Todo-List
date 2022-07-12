@@ -27,6 +27,12 @@ export const operationHandler = (() => {
         popupForm.style.display = 'flex';
         content.style.filter = 'opacity(5%)';
         content.style.filter = 'blur(10px)';
+        window.addEventListener('click', (e) => {
+            if (e.target.id == 'dashboard' || e.target.id == 'header') {
+                popupForm.style.display = 'none';
+                content.style.filter = 'none';
+            }
+        });
     };
     // create our popup for when the user wants to create a new list
     function listFormPopup() {
@@ -51,7 +57,7 @@ export const operationHandler = (() => {
     // adds a list to the page
     function addList(event) {
         event.preventDefault();
-        console.log(lists);
+        if (listTextBox.value == '') return;
         const list = createList();
         lists.push(list);
         listTextBox.value = '';
@@ -75,7 +81,7 @@ export const operationHandler = (() => {
     }
     // adds a task to our task list
     function addToTasks(task, activePage) {
-        
+
         allTasks.push(task);
     }
     // contains all of the styling for our task cards
@@ -129,6 +135,7 @@ export const operationHandler = (() => {
     // add a task to the page
     function addTask(event) {
         event.preventDefault();
+        if (title.value == '' || dueDate.value == '' || priority.value == null) return;
         const task = createTask();
         addToTasks(task);
         clearTasks();
