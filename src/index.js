@@ -1,6 +1,7 @@
 import Task from './task';
+import List from './list';
 
-let tasks = [];
+let allTasks = [];
 
 const createBtn = document.getElementById('addtask');
 const popupForm = document.getElementById('popup-form');
@@ -10,6 +11,12 @@ const description = document.getElementById('desc');
 const dueDate = document.getElementById('duedate');
 const priority = document.getElementById('priority');
 const taskList = document.getElementById('tasklist');
+const todayBtn = document.getElementById('todaybtn');
+const listTitle = document.getElementById('list-title');
+const addBtn = document.getElementById('addbtn');
+const allBtn = document.getElementById('all');
+const listPopupForm = document.getElementById('list-popup');
+const listTextBox = document.getElementById('#list-create');
 
 // will handle all of the operations on our page
 export const operationHandler = (() => {
@@ -19,6 +26,11 @@ export const operationHandler = (() => {
         content.style.filter = 'opacity(5%)';
         content.style.filter = 'blur(10px)';
     };
+    // create our popup for when the user wants to create a new list
+    function listFormPopup() {
+        addBtn.style.display = 'none';
+        listPopupForm.style.display = 'flex';
+    }
 
     // Task factory
     function createTask() {
@@ -29,8 +41,14 @@ export const operationHandler = (() => {
         return new Task(newTitle, newDesc, newDate, newPriority);
     };
 
+    // List Factory
+    function createList() {
+        const newTitle = listTextBox.value;
+        return new List(newTitle);
+    }
+
     function addToList(task) {
-        tasks.push(task);
+        allTasks.push(task);
     }
     
     function styleCard(task) {
@@ -41,7 +59,7 @@ export const operationHandler = (() => {
         const rightCard = document.createElement('div');
         const removeBtn = document.createElement('button');
         removeBtn.addEventListener('click', removeTask);
-        taskDiv.id = tasks.indexOf(task);
+        taskDiv.id = allTasks.indexOf(task);
         taskDiv.classList.add('task');
         leftCard.classList.add('left-card');
         cardTop.classList.add('card-top');
@@ -62,14 +80,14 @@ export const operationHandler = (() => {
     function displayAllTasks() {
         popupForm.style.display = 'none';
         content.style.filter = 'none';
-        for (let i = 0; i < tasks.length; i++) {
-            styleCard(tasks[i]);
+        for (let i = 0; i < allTasks.length; i++) {
+            styleCard(allTasks[i]);
         }
     }
 
     function removeTask(event) {
-        const task = tasks[event.target.id];
-        tasks.splice(tasks.indexOf(task), 1);
+        const task = allTasks[event.target.id];
+        allTasks.splice(allTasks.indexOf(task), 1);
         clearTasks();
         displayAllTasks();
     }
@@ -94,22 +112,9 @@ export const operationHandler = (() => {
         taskList.innerHTML = '';
     }
 
+
+
     createBtn.addEventListener('click', infoPopup);
     popupForm.addEventListener('submit', addTask);
+    addBtn.addEventListener('click', listFormPopup);
 })();
-
-/*<div class = 'task'>
-    <div class="left-card">
-        <div class = 'card-top'>
-            Title
-            Due Date
-            Priority
-        </div>
-        <div class = 'card-desc'>
-            asdfghjklqwertyuiopzxcvbn
-        </div>
-    </div>
-    <div class = 'right-card'>
-        <button type = 'button' class = 'removebtn'>Remove</button>
-    </div>
-</div>*/
