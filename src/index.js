@@ -38,6 +38,12 @@ export const operationHandler = (() => {
     function listFormPopup() {
         addBtn.style.display = 'none';
         listPopupForm.style.display = 'flex';
+        window.addEventListener('click', (e) => {
+            if (e.target.id == 'dashboard' || e.target.id == 'sidebar' || e.target.id =='header') {
+                addBtn.style.display = 'flex';
+                listPopupForm.style.display = 'none';
+            }
+        })
     }
 
     // Task factory
@@ -57,9 +63,12 @@ export const operationHandler = (() => {
     // adds a list to the page
     function addList(event) {
         event.preventDefault();
-        if (listTextBox.value == '') return;
+        if (listTextBox.value == '') {
+            return;
+        }
         const list = createList();
         lists.push(list);
+        console.log(lists);
         listTextBox.value = '';
         clearLists();
         displayLists();
