@@ -28,7 +28,7 @@ export const operationHandler = (() => {
         content.style.filter = 'opacity(5%)';
         content.style.filter = 'blur(10px)';
         window.addEventListener('click', (e) => {
-            if (e.target.id == 'dashboard' || e.target.id == 'header') {
+            if (e.target.id == 'dashboard' || e.target.id == 'header' || e.target.id == 'sidebar' || e.target.id == 'classification') {
                 popupForm.style.display = 'none';
                 content.style.filter = 'none';
             }
@@ -39,7 +39,7 @@ export const operationHandler = (() => {
         addBtn.style.display = 'none';
         listPopupForm.style.display = 'flex';
         window.addEventListener('click', (e) => {
-            if (e.target.id == 'dashboard' || e.target.id == 'sidebar' || e.target.id =='header') {
+            if (e.target.id == 'dashboard' || e.target.id == 'sidebar' || e.target.id =='header' || e.target.id == 'classification') {
                 addBtn.style.display = 'flex';
                 listPopupForm.style.display = 'none';
             }
@@ -83,8 +83,9 @@ export const operationHandler = (() => {
         addBtn.style.display = 'flex';
         for (let i = 2; i < lists.length; i++) {
             let listBtn = document.createElement('button');
-            listBtn.setAttribute('id', (lists[i].title.toLowerCase()) + 'btn');
+            listBtn.setAttribute('id', lists[i].title);
             listBtn.textContent = lists[i].title;
+            listBtn.addEventListener('click', updateActiveList);
             projectList.appendChild(listBtn);
         }
     }
@@ -113,6 +114,8 @@ export const operationHandler = (() => {
         taskDiv.classList.add('task');
         leftCard.classList.add('left-card');
         cardTop.classList.add('card-top');
+        cardTop.setAttribute('contenteditable', 'true');
+        cardDesc.setAttribute('contenteditable', 'true');
         cardDesc.classList.add('card-desc');
         rightCard.classList.add('right-card');
         removeBtn.classList.add ('removebtn');
@@ -164,7 +167,9 @@ export const operationHandler = (() => {
     }
 
     // need to determine which list we are looking at
-
+    function updateActiveList() {
+        
+    }
 
     createBtn.addEventListener('click', infoPopup);
     popupForm.addEventListener('submit', addTask);
