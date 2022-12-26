@@ -178,8 +178,13 @@ export const operationHandler = (() => {
         for (let i = 0; i < lists.length; i++) {
             if (lists[i].title == event.target.id) activePage = i;
         }
+        listTitle.innerHTML = event.target.id;
+        clearTasks();
+        displayAllTasks();
     }
 
+    allBtn.addEventListener('click', updateActiveList);
+    todayBtn.addEventListener('click', updateActiveList);
     createBtn.addEventListener('click', infoPopup);
     popupForm.addEventListener('submit', addTask);
     addBtn.addEventListener('click', listFormPopup);
