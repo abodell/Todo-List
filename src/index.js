@@ -174,8 +174,10 @@ export const operationHandler = (() => {
     }
 
     // need to determine which list we are looking at
-    function updateActiveList() {
-        
+    function updateActiveList(event) {
+        for (let i = 0; i < lists.length; i++) {
+            if (lists[i].title == event.target.id) activePage = i;
+        }
     }
 
     createBtn.addEventListener('click', infoPopup);
