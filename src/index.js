@@ -96,6 +96,9 @@ export const operationHandler = (() => {
         page = activePage;
         allTasks.push(task);
         lists[page].tasks.push(task);
+        if (page != 0) {
+            lists[0].tasks.push(task);
+        }
         console.log(lists);
     }
     // contains all of the styling for our task cards
