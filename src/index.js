@@ -3,6 +3,7 @@ import List from './list';
 
 let allTasks = [];
 let lists = [new List('All'), new List('Today')];
+let activePage = 0; // stores the index in our list array of which list to show
 
 const createBtn = document.getElementById('addtask');
 const popupForm = document.getElementById('popup-form');
@@ -84,15 +85,18 @@ export const operationHandler = (() => {
         for (let i = 2; i < lists.length; i++) {
             let listBtn = document.createElement('button');
             listBtn.setAttribute('id', lists[i].title);
+            listBtn.setAttribute('class', 'listBtn');
             listBtn.textContent = lists[i].title;
             listBtn.addEventListener('click', updateActiveList);
             projectList.appendChild(listBtn);
         }
     }
     // adds a task to our task list
-    function addToTasks(task, activePage) {
-
+    function addToTasks(task, page) {
+        page = activePage;
         allTasks.push(task);
+        lists[page].tasks.push(task);
+        console.log(lists);
     }
     // contains all of the styling for our task cards
     function styleCard(task) {
@@ -130,26 +134,29 @@ export const operationHandler = (() => {
         taskList.appendChild(taskDiv);
     }
 
-    function displayAllTasks() {
+    function displayAllTasks(page) {
+        page = activePage;
         popupForm.style.display = 'none';
         content.style.filter = 'none';
-        for (let i = 0; i < allTasks.length; i++) {
-            styleCard(allTasks[i]);
+        for (let i = 0; i < lists[page].tasks.length; i++) {
+            styleCard(lists[page].tasks[i]);
         }
     }
 
-    function removeTask(event) {
-        const task = allTasks[event.target.id];
-        allTasks.splice(allTasks.indexOf(task), 1);
+    function removeTask(event, page) {
+        page = activePage;
+        const task = lists[page].tasks[event.target.id];
+        lists[page].tasks.splice(lists[page].tasks.indexOf(task), 1);
         clearTasks();
         displayAllTasks();
     }
     // add a task to the page
-    function addTask(event) {
+    function addTask(event, page) {
         event.preventDefault();
+        page = activePage;
         if (title.value == '' || dueDate.value == '' || priority.value == null) return;
         const task = createTask();
-        addToTasks(task);
+        addToTasks(task, page);
         clearTasks();
         displayAllTasks();
         clearInputs();
