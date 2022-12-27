@@ -99,6 +99,14 @@ export const operationHandler = (() => {
         if (page != 0) {
             lists[0].tasks.push(task);
         }
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        if (page != 1 && task.date == today) {
+            lists[1].tasks.push(task);
+        }
         console.log(lists);
     }
     // contains all of the styling for our task cards
@@ -148,12 +156,11 @@ export const operationHandler = (() => {
 
     function removeTask(event, page) {
         page = activePage;
-        const task = lists[page].tasks[event.target.id];
+        let task = lists[page].tasks[event.target.id];
         lists[page].tasks.splice(lists[page].tasks.indexOf(task), 1);
         console.log(page);
         if (page != 0) {
-            lists[0].tasks.splice(lists[0].tasks.indexOf(task), 1);
-            console.log(lists[0]);
+           lists[0].tasks.splice(lists[0].tasks.indexOf(task), 1);
         }
         clearTasks();
         displayAllTasks();
@@ -163,7 +170,7 @@ export const operationHandler = (() => {
         event.preventDefault();
         page = activePage;
         if (title.value == '' || dueDate.value == '' || priority.value == null) return;
-        const task = createTask();
+        let task = createTask();
         addToTasks(task, page);
         clearTasks();
         displayAllTasks();
