@@ -150,6 +150,7 @@ export const operationHandler = (() => {
         page = activePage;
         const task = lists[page].tasks[event.target.id];
         lists[page].tasks.splice(lists[page].tasks.indexOf(task), 1);
+        console.log(page);
         if (page != 0) {
             lists[0].tasks.splice(lists[0].tasks.indexOf(task), 1);
             console.log(lists[0]);
