@@ -125,7 +125,7 @@ export const operationHandler = (() => {
         const rightCard = document.createElement('div');
         const removeBtn = document.createElement('button');
         removeBtn.addEventListener('click', removeTask);
-        taskDiv.id = allTasks.indexOf(task);
+        taskDiv.id = task.title;
         taskDiv.classList.add('task');
         leftCard.classList.add('left-card');
         cardTop.classList.add('card-top');
@@ -134,6 +134,7 @@ export const operationHandler = (() => {
         cardDesc.classList.add('card-desc');
         rightCard.classList.add('right-card');
         removeBtn.classList.add ('removebtn');
+        removeBtn.id = task.title;
         cardTop.innerHTML = task.getTitle().toUpperCase() + '\t\t' + task.getDate();
         cardDesc.innerHTML = task.getDesc();
         leftCard.appendChild(cardTop);
@@ -156,11 +157,14 @@ export const operationHandler = (() => {
 
     function removeTask(event, page) {
         page = activePage;
-        let task = lists[page].tasks[event.target.id];
-        lists[page].tasks.splice(lists[page].tasks.indexOf(task), 1);
-        console.log(page);
-        if (page != 0) {
-           lists[0].tasks.splice(lists[0].tasks.indexOf(task), 1);
+        let task = lists[page].tasks[event.target];
+        console.log("task is: " + task);
+        for (let i = 0; i < lists.length; i++) {
+            for (let j = 0; j < lists[i].tasks.length; j++) {
+                if (lists[i].tasks[j].title == event.target.id) {
+                    lists[i].tasks.splice(lists[i].tasks[i], 1);
+                }
+            }
         }
         clearTasks();
         displayAllTasks();
