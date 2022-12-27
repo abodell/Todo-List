@@ -152,6 +152,7 @@ export const operationHandler = (() => {
         lists[page].tasks.splice(lists[page].tasks.indexOf(task), 1);
         if (page != 0) {
             lists[0].tasks.splice(lists[0].tasks.indexOf(task), 1);
+            console.log(lists[0]);
         }
         clearTasks();
         displayAllTasks();
